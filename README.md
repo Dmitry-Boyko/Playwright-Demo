@@ -1,3 +1,5 @@
+
+
 # Playwright-Demo
 Test Execution with CLI
 - The project was created for an in-depth study of the Playwright framework for UI testing.
@@ -12,6 +14,11 @@ Test Execution with CLI
 - TO run bulk tests with skip one: test.skip('test name') => similiar action from the Cypress (it.skip('test name') or it.only('test name'))
   
 - To see report: yarn playwright show-report
+- 
+# Debuging type:
+- Run test and trace it: yarn playwright test --project=chromium --trace on
+- Debug mode: yarn playwright test --project=chromium --debug
+- Add red point on test line for the debug
 
 Test Execution with UI mode
 - Running the Example Test in UI Mode: yarn playwright test --ui
