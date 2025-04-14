@@ -15,7 +15,7 @@ Test Execution with CLI
   
 - To see report: yarn playwright show-report
 - 
-# Debuging type:
+Debuging type:
 - Run test and trace it: yarn playwright test --project=chromium --trace on
 - Debug mode: yarn playwright test --project=chromium --debug
 - Add red point on test line for the debug
