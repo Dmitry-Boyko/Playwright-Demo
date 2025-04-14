@@ -3,7 +3,10 @@ Playwright: home-project-01
 - The project was created for an in-depth study of the Playwright framework for UI testing.
 - To install: yarn create playwright
 - To run 'demo-test': yarn playwright test
-- To run on selected browser type: yarn playwright test --project=chromium  (Google Chrome) See other setups inside playwright.config.ts
+- To run on selected browser type:
+- yarn playwright test --project=chromium
+- yarn playwright test --project=chromium --headed
+- Test runs on Google Chrome. Find other browser setups inside playwright.config.ts
   
 - To see report: yarn playwright show-report
 
