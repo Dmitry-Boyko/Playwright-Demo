@@ -11,7 +11,7 @@ Test Execution with CLI
 - Test runs on Google Chrome. Find other browser setups inside playwright.config.ts
 - To run specific test file:  yarn playwright test <adds full filename here> --project=chromium --headed
 - To run specific test by name:  yarn playwright test -g "<test name>" --project=chromium
-- TO run bulk tests with skip one: test.skip('test name') => similiar action from the Cypress (it.skip('test name') or it.only('test name'))
+- To run bulk tests with skip one: test.skip('test name') => similiar action from the Cypress (it.skip('test name') or it.only('test name'))
   
 - To see report: yarn playwright show-report
 - 
