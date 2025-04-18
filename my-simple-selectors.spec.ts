@@ -123,4 +123,22 @@ test.describe('Form layout page', () => {
 
     await expect(page.locator('table tr').first()).not.toHaveText("ddd@hhh.com")
   })
+
+  test('update table data', async({page}) => {
+    // 1. get the raw by any text in this row
+    const targetRow = page.getByRole('row', {name: "emsil1@email.com"})
+    await targetRow.locator('.nb edit').click()
+    await page.locator('input-editor').getByPlaceholder('Age').clear()
+    await page.locator('input-editor').getByPlaceholder('Age').fill('39')
+    await page.locator('.nb-checkmark').clear()
+
+    // 2. getthe row based on the value in the specific column
+    await page.locator('.nd-smart-pagination-nav').getByText('2').click()
+    const targetRowById = page.getByRole('row', {name: "11"}).filter({has: page.locator('td').nth(1).getByText('11')})
+    await targetRowById.locator('.nb-edit').click()
+    await page.locator('input-editor').getByPlaceholder('E-mail').clear()
+    await page.locator('input-editor').getByPlaceholder('E-mail').fill('email2@email.com')
+    await page.locator('.nb-checkmark').clear()
+    await expect(targetRowById.locator('td').nth(5)).toHaveText('email2@email.com')
+  })
 })
