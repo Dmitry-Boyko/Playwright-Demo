@@ -110,4 +110,17 @@ test.describe('Form layout page', () => {
     const tooltip = await page.locator('nb-tooltip').textContent()
     expect(tooltip).toEqual('This is a tooltip')
   })
+
+  test('dialog box', async({page}) => {
+
+    // create a listener:
+    page.on('dialog', dialog => {
+      expect(dialog.message()).toEqual('Are you sure you want to delete?')
+      dialog.accept()
+    })
+    
+    await page.getByRole('table').locator('tr', {hasText: "ddd@hhh.com"}).locator('.nb-trash').click()
+
+    await expect(page.locator('table tr').first()).not.toHaveText("ddd@hhh.com")
+  })
 })
