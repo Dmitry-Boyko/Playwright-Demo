@@ -140,5 +140,25 @@ test.describe('Form layout page', () => {
     await page.locator('input-editor').getByPlaceholder('E-mail').fill('email2@email.com')
     await page.locator('.nb-checkmark').clear()
     await expect(targetRowById.locator('td').nth(5)).toHaveText('email2@email.com')
+
+    // 3 test filter of the table
+    const ages = ["20", "30", "40", "200"]
+    for( let age of ages){
+      await page.locator('input-filter').getByPlaceholder('Age').clear()
+      await page.locator('input-filter').getByPlaceholder('Age').fill(age)
+      await page.waitForTimeout(200)
+      const ageRows = page.locator('tbody tr')
+      
+      for(let row of await ageRows.all()){
+        const cetValue = await row.locator('td').textContent()
+
+        if(age == "200"){
+          expect(await page.getByRole('table').textContent()).toContain('NO data found')
+        } else {
+          expect(cetValue).toEqual(age)
+        }
+      }
+    }
+
   })
 })
