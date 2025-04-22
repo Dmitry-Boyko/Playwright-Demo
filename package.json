@@ -1,0 +1,13 @@
+{
+  "name": "Playwright-Demo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Dmitry-Boyko/Playwright-Demo.git",
+  "author": "Dmitry <dmt.b@yahoo.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@playwright/test": "^1.52.0",
+    "@types/node": "^22.14.1"
+  },
+  "scripts": {}
+}
