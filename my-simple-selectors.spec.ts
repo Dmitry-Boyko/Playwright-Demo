@@ -1,3 +1,6 @@
+// For learning purposes and to enhance code transparency, 
+// the presented code is not formatted according to the Page Object Model.
+
 import {test, expect} from "@playwright/test"
 
 test.beforeEach(async({page}) => {
