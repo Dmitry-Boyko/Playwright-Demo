@@ -189,3 +189,18 @@ test('date picker', async({page}) => {
   await page.locator('[calss="day-cell ng-star-inserted"]').getByText(expectedDate, {exact: true}).click()
   await expect(calendarInputField).toHaveValue(dateToAssert)
 })
+
+test('mouse moving', async({page}) => {
+  const tempBox = page.locator('[tabtitle="Temperature"] ngx-temperature-dragger')
+  await tempBox.scrollIntoViewIfNeeded()
+
+  const box = await tempBox.boundingBox()
+  const x = box.x + box.width / 2
+  const y = box.y + box.height / 2
+  await page.mouse.move(x, y)
+  await page.mouse.down()
+  await page.mouse.move(x +100, y)
+  await page.mouse.move(x+100, y+100)
+  await page.mouse.up()
+  await expect(tempBox).toContainText('30')
+})
