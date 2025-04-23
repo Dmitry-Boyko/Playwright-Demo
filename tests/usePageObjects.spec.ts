@@ -8,4 +8,5 @@ test.beforeEach(async({page}) => {
 test('navigate to the form page', async({page}) => {
   const navigateTo = new NavigationPage(page)
   navigateTo.formLayoutsPage()
+  navigateTo.datePickerPage()
 })
