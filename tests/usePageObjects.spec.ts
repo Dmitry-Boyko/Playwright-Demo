@@ -1,5 +1,6 @@
 import { test, expect } from "@playwright/test"
 import {NavigationPage} from "../util/navigationPage"
+import {FormLayoutsPage} from "../util/formLayoutPage"
 
 test.beforeEach(async({page}) => {
   await page.goto('http://localhost:4200/')
@@ -7,6 +8,15 @@ test.beforeEach(async({page}) => {
 
 test('navigate to the form page', async({page}) => {
   const navigateTo = new NavigationPage(page)
-  navigateTo.formLayoutsPage()
-  navigateTo.datePickerPage()
+  await navigateTo.formLayoutsPage()
+  await navigateTo.datePickerPage()
+})
+
+test('parametrized methods', async({page}) => {
+  const navigateTo = new NavigationPage(page)
+  const onFormLayoutPage = new FormLayoutsPage(page)
+
+  await navigateTo.formLayoutsPage()
+  await onFormLayoutPage.submitUsingTheGridFormWithCredentialsAndSelectOption('test@test.com', 'mywelcome1', 'Option 1')
+  await onFormLayoutPage.submitInLineFormWithNameEmailAndCheckbox('John Smith', "john@test.com", true)
 })
