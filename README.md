@@ -4,7 +4,8 @@
 Test Execution with CLI
 - The project was created for an in-depth study of the Playwright framework for UI testing.
 - To install: yarn create playwright
-- To run 'demo-test': yarn playwright test
+- To run the test headless: yarn playwright test
+- To run the test with UI: yarn playwright test --headed
 - To run on selected browser type:
 - yarn playwright test --project=chromium
 - yarn playwright test --project=chromium --headed
