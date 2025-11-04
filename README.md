@@ -56,9 +56,11 @@ await page.getByTestId('login-button').click();
 // which make tests more readable and resilient.
 
 // cy
+
 // const getBydataTestId = (id: string) => cy.get(`[data-tested=${id}]`)
 
 // pw
+
 const getBydataTestId = (id: string, page: Page) => page.locator(`[data-tested="${id}"]`)
 const clickByDataTestId = (id: string, page: Page) => getByDataTestId(id, page).click()
 const typeByDataTestID = async (id: string, page: Page, inputText: string) => {
