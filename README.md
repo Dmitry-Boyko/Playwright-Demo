@@ -50,20 +50,23 @@ Ensure tables have proper alignment and spacing:
 
 # Example Usage
 
-await page.getByText('Submit').click();
-await page.getByRole('button', { name: 'Save' }).click();
-await page.getByLabel('Email').fill('user@example.com');
-await page.getByTestId('login-button').click();
+await page.getByText('Submit').click()
+
+await page.getByRole('button', { name: 'Save' }).click()
+
+await page.getByLabel('Email').fill('user@example.com')
+
+await page.getByTestId('login-button').click()
 
 
-These methods are part of Playwright’s testing library-style selectors, 
-which make tests more readable and resilient.
+* These methods are part of Playwright’s testing library-style selectors, 
+* which make tests more readable and resilient.
 
-# cy
+## cy
 
 const getBydataTestId = (id: string) => cy.get(`[data-tested=${id}]`)
 
-# pw
+## pw
 
 const getBydataTestId = (id: string, page: Page) => page.locator(`[data-tested="${id}"]`)
 
@@ -75,26 +78,26 @@ const typeByDataTestID = async (id: string, page: Page, inputText: string) => {
 
 
 
-# action-helper.ts file
+## action-helper.ts file
 
 import { Page } from '@playwright/test';
 
 export const getByDataTestId = (id: string, page: Page) =>
-  page.locator(`[data-tested="${id}"]`);
+  page.locator(`[data-tested="${id}"]`)
 
 export const clickByDataTestId = async (id: string, page: Page) =>
-  await getByDataTestId(id, page).click();
+  await getByDataTestId(id, page).click()
 
 export const typeByDataTestId = async (
   id: string,
   page: Page,
   inputText: string
 ) => {
-  await getByDataTestId(id, page).type(inputText);
+  await getByDataTestId(id, page).type(inputText)
 }
 
 
-# test.spec.ts file
+## test.spec.ts file
 
 import { getByDataTestId, clickByDataTestId, typeByDataTestId } from './qa-utils'
 
