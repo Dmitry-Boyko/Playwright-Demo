@@ -62,7 +62,9 @@ await page.getByTestId('login-button').click();
 // pw
 
 const getBydataTestId = (id: string, page: Page) => page.locator(`[data-tested="${id}"]`)
+
 const clickByDataTestId = (id: string, page: Page) => getByDataTestId(id, page).click()
+
 const typeByDataTestID = async (id: string, page: Page, inputText: string) => {
   await getByDataTestId(id, page).type(inputText)
 }
