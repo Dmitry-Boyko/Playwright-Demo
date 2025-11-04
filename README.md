@@ -46,6 +46,7 @@ Debuging type:
 | page.getByAltText(text)    | Finds image by alt text                             |
 | page.getByTestId(id)       | Finds element by 'data-testid' attribute            |
 
+```ts
 
 # Example Usage
 
