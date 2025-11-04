@@ -1,7 +1,7 @@
 
 
 # Playwright-Demo
-Test Execution with CLI
+## Test Execution with CLI
 * The project was created for an in-depth study of the Playwright framework for UI testing.
 * To install: yarn create playwright
 * To run the test headless: yarn playwright test
@@ -21,45 +21,49 @@ Debuging type:
 * Debug mode: yarn playwright test --project=chromium --debug
 * Add red point on test line for the debug
 
-Test Execution with UI mode
+## Test Execution with UI mode
 * Running the Example Test in UI Mode: yarn playwright test --ui
 
-* To Updating Playwright:
-  yarn add --dev @playwright/test@latest
+##  To Updating Playwright:
+*  yarn add --dev @playwright/test@latest
   # Also download new browser binaries and their dependencies:
-  yarn playwright install --with-deps
+*  yarn playwright install --with-deps
 * To see current Playwright version: yarn playwright --version
 
 
 
---- Playwright vs Cypress exploretion ---
+# Playwright Locator Methods (page.getBy...)
 
- Playwright Locator Methods (page.getBy...)
-| Method                      | Description                                         | 
-| page.getByText(text)        | Finds element by visible text                       | 
-| page.getByRole(role)        | Finds element by ARIA role (e.g., button, textbox)  | 
-| page.getByLabel(label)      | Finds form control by associated label              | 
-| page.getByPlaceholder(text) | Finds input by placeholder text                     | 
-| page.getByTitle(title)      | Finds element by title attribute                    | 
-| page.getByAltText(text)     | Finds image by alt text                             | 
-| page.getByTestId(id)        | Finds element by 'data-testid' attribute            | 
+Ensure tables have proper alignment and spacing:
 
 
-// Example Usage
+| Method                      | Description                                         |
+|----------------------------|-----------------------------------------------------|
+| page.getByText(text)       | Finds element by visible text                       |
+| page.getByRole(role)       | Finds element by ARIA role (e.g., button, textbox)  |
+| page.getByLabel(label)     | Finds form control by associated label              |
+| page.getByPlaceholder(text)| Finds input by placeholder text                     |
+| page.getByTitle(title)     | Finds element by title attribute                    |
+| page.getByAltText(text)    | Finds image by alt text                             |
+| page.getByTestId(id)       | Finds element by 'data-testid' attribute            |
+
+
+# Example Usage
+
 await page.getByText('Submit').click();
 await page.getByRole('button', { name: 'Save' }).click();
 await page.getByLabel('Email').fill('user@example.com');
 await page.getByTestId('login-button').click();
 
 
-// These methods are part of Playwright’s testing library-style selectors, 
-// which make tests more readable and resilient.
+These methods are part of Playwright’s testing library-style selectors, 
+which make tests more readable and resilient.
 
-// cy
+# cy
 
-// const getBydataTestId = (id: string) => cy.get(`[data-tested=${id}]`)
+const getBydataTestId = (id: string) => cy.get(`[data-tested=${id}]`)
 
-// pw
+# pw
 
 const getBydataTestId = (id: string, page: Page) => page.locator(`[data-tested="${id}"]`)
 
@@ -71,7 +75,8 @@ const typeByDataTestID = async (id: string, page: Page, inputText: string) => {
 
 
 
---- action-helper.ts file ---
+# action-helper.ts file
+
 import { Page } from '@playwright/test';
 
 export const getByDataTestId = (id: string, page: Page) =>
@@ -89,12 +94,16 @@ export const typeByDataTestId = async (
 }
 
 
---- test.spec.ts file ---
+# test.spec.ts file
 
 import { getByDataTestId, clickByDataTestId, typeByDataTestId } from './qa-utils'
 
 test('login flow', async ({ page }) => {
+
   await typeByDataTestId('username', page, 'qa-develop')
+  
   await typeByDataTestId('password', page, 'securePass123')
+  
   await clickByDataTestId('submit-button', page)
+  
 })
