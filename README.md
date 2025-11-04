@@ -26,15 +26,14 @@ Debuging type:
 
 ##  To Updating Playwright:
 *  yarn add --dev @playwright/test@latest
-  # Also download new browser binaries and their dependencies:
+
+# Also download new browser binaries and their dependencies:
 *  yarn playwright install --with-deps
 * To see current Playwright version: yarn playwright --version
 
 
 
 # Playwright Locator Methods (page.getBy...)
-
-Ensure tables have proper alignment and spacing:
 
 
 | Method                      | Description                                         |
